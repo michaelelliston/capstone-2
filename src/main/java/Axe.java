@@ -1,12 +1,9 @@
 public class Axe extends MeleeWeapon {
 
-    private double typeFee;
-    private String axeType;
-    boolean isDoubleSided;
+    protected String axeType;
 
-    public Axe(String type, String material, double basePrice, boolean isInlaid, String axeType, double typeFee) {
-        super(type, material, basePrice, isInlaid);
+    public Axe(String material, boolean isInlaid, String axeType) {
+        super(material, isInlaid);
         this.axeType = axeType;
-        this.typeFee = typeFee;
     }
 }

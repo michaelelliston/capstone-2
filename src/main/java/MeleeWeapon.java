@@ -1,9 +1,9 @@
 public abstract class MeleeWeapon extends Weapon {
     // TODO: Create fields for MeleeWeapon
-    private boolean isInlaid;
+    protected boolean isInlaid;
 
-    public MeleeWeapon(String type, String material, double basePrice, boolean isInlaid) {
-        super(type, material, basePrice);
+    public MeleeWeapon(String material, boolean isInlaid) {
+        super(material);
         this.isInlaid = isInlaid;
     }
 }

@@ -1,17 +1,14 @@
 public abstract class Weapon implements Priceable {
 
-    private String type;
-    private String material;
-    private double basePrice;
+    protected String type;
+    protected String material;
 
-    public Weapon(String type, String material, double basePrice) {
-        this.type = type;
+    public Weapon(String material) {
         this.material = material;
-        this.basePrice = basePrice;
     }
 
     @Override
     public double getPrice() {
-        return this.basePrice;
+        return 0;
     }
 }

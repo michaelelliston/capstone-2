@@ -1,5 +1,5 @@
 Category|Material|Type|Price
-#Iron is used as the Base price for this shop. If a different material ends up being the cheapest in the future, replace Iron's position in this with it.
+#Iron is currently used as the Base price for this shop.
 Weapon|Iron|Shortsword|80.00
 Weapon|Iron|Longsword|120.00
 Weapon|Iron|Greatsword|230.00
@@ -26,3 +26,9 @@ Material|Adamantine|Greatsword|300.00
 Material|Adamantine|Hatchet|80.00
 Material|Adamantine|Broadaxe|140.00
 Material|Adamantine|Greataxe|240.00
+Upgrade|Inlay|Amethyst|100.00
+Upgrade|Inlay|Garnet|120.00
+Upgrade|Inlay|Emerald|130.00
+Upgrade|Inlay|Citrine|190.00
+Upgrade|Inlay|Sapphire|270.00
+Upgrade|Inlay|Diamond|400.00

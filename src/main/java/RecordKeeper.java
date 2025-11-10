@@ -24,13 +24,14 @@ public class RecordKeeper {
                 }
 
                 String[] parts = line.split("\\|");
+
                 if (parts.length == 4) {
                     String category = parts[0].trim();
                     String material = parts[1].trim();
                     String type = parts[2].trim();
                     double price = Double.parseDouble(parts[3].trim());
 
-                    String key = category + ":" + material + ":" + type;
+                    String key = category + "|" + material + "|" + type;
                     itemPrices.put(key, price);
                 }
             }
@@ -42,9 +43,9 @@ public class RecordKeeper {
         }
     }
 
-    public double getPrice(String category, String material, String type) {
+    public double getReadPrice(String category, String material, String type) {
 
-        String key = category + ":" + material + ":" + type;
+        String key = category + "|" + material + "|" + type;
 
         return itemPrices.getOrDefault(key, 0.0); // Returns the key's value within the hashmap, but if it doesn't exist, returns 0.0 instead.
     }
