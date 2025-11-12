@@ -16,6 +16,10 @@ public class Sword extends MeleeWeapon {
     }
 
     public String getType() {
+        return this.weaponType;
+    }
+
+    public String getSubType() {
         return this.swordType;
     }
 
@@ -32,7 +36,7 @@ public class Sword extends MeleeWeapon {
 
     @Override
     public String toString() {
-        return String.format("%s made of %s with an inlay of %s, priced at: $%.2f", this.getType(), this.getMaterial(), this.getGemType(), this.getTotalPrice());
+        return String.format("%s made of %s with an inlay of %s, priced at: $%.2f", this.getSubType(), this.getMaterial(), this.getGemType(), this.getTotalPrice());
     }
 
 

@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RecordKeeper {
@@ -48,5 +46,28 @@ public class RecordKeeper {
         String key = category + "|" + material + "|" + type;
 
         return itemPrices.get(key); // Returns the key's value within the hashmap
+    }
+
+    public void writeReceipt(Order order) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(receiptsFilePath + "/testreceipt.csv"))) {
+
+            ArrayList<Priceable> currentOrder = order.getAllItemsInOrder();
+
+            for (Priceable item : currentOrder) {
+
+                writer.write(item.toString() + "\n");
+                if (item instanceof Sword) {
+                    writer.printf("\t %s: $%.2f\n", ((Sword) item).getSubType(), getReadPrice("Weapon", "Base", ((Sword) item).getSubType()));
+                    writer.printf("\t %s: $%.2f\n", ((Sword) item).getMaterial(), getReadPrice("Material", ((Sword) item).getMaterial(), ((Sword) item).getSubType()));
+                    if (((Sword) item).isInlaid) {
+                        writer.printf("\t %s inlay: $%.2f\n", ((Sword) item).getGemType(), getReadPrice("Upgrade", ((Sword) item).getGemType(), "Inlay"));
+                    }
+                }
+            }
+
+
+        } catch (IOException e) {
+            System.err.println("An error occurred while trying to write your receipt.");
+        }
     }
 }

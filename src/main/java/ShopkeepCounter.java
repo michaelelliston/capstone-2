@@ -55,7 +55,7 @@ public class ShopkeepCounter {
         System.out.println();
         currentOrder.displayItemsInOrder();
         System.out.printf("\nYour order comes to a total of: $%.2f", currentOrder.getTotalPrice());
-        InputGetter.getString("\n Wake me up when you're ready to continue... Zzzzz...\n");
+        InputGetter.getString("\n\n\tWake me up when you're ready to continue... Zzzzz...\n");
     }
 
     private void processOrderCheckoutRequest() {
@@ -63,7 +63,7 @@ public class ShopkeepCounter {
         currentOrder.displayItemsInOrder();
         System.out.printf("\nYour order comes to a total of: $%.2f\n", currentOrder.getTotalPrice());
         int userInput = 0;
-        while (!(userInput == 2)) {
+        while (!(userInput == 2) && !(userInput == 1)) {
             userInput = InputGetter.getInt("""
                     \n
                     \t1) Yes
@@ -73,8 +73,9 @@ public class ShopkeepCounter {
                     """);
 
             switch (userInput) {
-//                case 1 -> recordKeeper.writeReceipt(currentOrder); // TODO: Create a method to write a Receipt file with date/time as the file name
-                default -> System.out.println("Invalid selection, try again.");
+                case 1 -> recordKeeper.writeReceipt(currentOrder);
+                case 2 -> System.out.println("\nRight, lets put a hold on that.");
+                default -> System.out.println("\nInvalid selection, try again.");
 
             }
         }
