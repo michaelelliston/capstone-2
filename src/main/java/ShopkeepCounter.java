@@ -169,6 +169,10 @@ public class ShopkeepCounter {
 
                     if (userInput == 1) {
                         currentOrder.addPurchase(sword);
+                    } else if (userInput == 99) {
+                        System.out.println("\nRight, scratch that.");
+                    } else {
+                        System.out.println("\nInvalid selection, try again.");
                     }
                 }
             }
@@ -245,6 +249,10 @@ public class ShopkeepCounter {
 
                     if (userInput == 1) {
                         currentOrder.addPurchase(axe);
+                    } else if (userInput == 99) {
+                        System.out.println("\nRight, scratch that.");
+                    } else {
+                        System.out.println("\nInvalid selection, try again.");
                     }
                 }
             }
@@ -322,6 +330,10 @@ public class ShopkeepCounter {
 
                     if (userInput == 1) {
                         currentOrder.addPurchase(mace);
+                    } else if (userInput == 99) {
+                        System.out.println("\nRight, scratch that.");
+                    } else {
+                        System.out.println("\nInvalid selection, try again.");
                     }
                 }
 
