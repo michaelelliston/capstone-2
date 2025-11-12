@@ -23,7 +23,7 @@ public class ShopkeepCounter {
         int userInput = 0;
         while (!(userInput == 99)) {
             userInput = InputGetter.getInt("""
-                    \n
+                    
                     \t1) Sword
                     \t2) Axe
                     \t3) Mace
@@ -62,11 +62,12 @@ public class ShopkeepCounter {
     private void processDisplayOrderRequest() {
         System.out.println();
         currentOrder.displayItemsInOrder();
-        System.out.printf("Your order comes to a total of: $%.2f", currentOrder.getTotalPrice());
+        System.out.printf("\nYour order comes to a total of: $%.2f", currentOrder.getTotalPrice());
         InputGetter.getString("\n Wake me up when you're ready to continue... Zzzzz...\n");
     }
 
     private void processOrderCheckoutRequest() {
+        System.out.println();
         currentOrder.displayItemsInOrder();
         System.out.printf("\nYour order comes to a total of: $%.2f\n", currentOrder.getTotalPrice());
         int userInput = 0;
@@ -81,6 +82,7 @@ public class ShopkeepCounter {
 
             switch (userInput) {
 //                case 1 -> recordKeeper.writeReceipt(currentOrder);
+                default -> System.out.println("Invalid selection, try again.");
 
             }
         }
@@ -110,6 +112,7 @@ public class ShopkeepCounter {
                         case 1 -> weaponSubType = "Shortsword";
                         case 2 -> weaponSubType = "Longsword";
                         case 3 -> weaponSubType = "Greatsword";
+                        default -> System.out.println("Invalid selection, try again.");
                     }
                 }
 
@@ -185,6 +188,7 @@ public class ShopkeepCounter {
                         case 1 -> weaponSubType = "Hatchet";
                         case 2 -> weaponSubType = "Broadaxe";
                         case 3 -> weaponSubType = "Greataxe";
+                        default -> System.out.println("Invalid selection, try again.");
                     }
                 }
 
@@ -203,6 +207,7 @@ public class ShopkeepCounter {
                         case 2 -> weaponMaterial = "Steel";
                         case 3 -> weaponMaterial = "Mithral";
                         case 4 -> weaponMaterial = "Adamantine";
+                        default -> System.out.println("Invalid selection, try again.");
                     }
                 }
 
@@ -260,6 +265,7 @@ public class ShopkeepCounter {
                         case 1 -> weaponSubType = "Battle Mace";
                         case 2 -> weaponSubType = "Warhammer";
                         case 3 -> weaponSubType = "Maul";
+                        default -> System.out.println("Invalid selection, try again.");
                     }
                 }
 
@@ -278,6 +284,7 @@ public class ShopkeepCounter {
                         case 2 -> weaponMaterial = "Steel";
                         case 3 -> weaponMaterial = "Mithral";
                         case 4 -> weaponMaterial = "Adamantine";
+                        default -> System.out.println("Invalid selection, try again.");
                     }
                 }
 
@@ -347,6 +354,7 @@ public class ShopkeepCounter {
                 case 5 -> selection = "Sapphire";
                 case 6 -> selection = "Diamond";
                 case 99 -> selection = "None";
+                default -> System.out.println("Invalid selection, try again.");
             }
         }
         return selection;
