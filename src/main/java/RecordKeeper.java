@@ -55,15 +55,38 @@ public class RecordKeeper {
 
             for (Priceable item : currentOrder) {
 
-                writer.write(item.toString() + "\n");
+                writer.write("\t\t" + item.toString() + "\n");
                 if (item instanceof Sword) {
-                    writer.printf("\t %s: $%.2f\n", ((Sword) item).getSubType(), getReadPrice("Weapon", "Base", ((Sword) item).getSubType()));
-                    writer.printf("\t %s: $%.2f\n", ((Sword) item).getMaterial(), getReadPrice("Material", ((Sword) item).getMaterial(), ((Sword) item).getSubType()));
+                    writer.printf("\t\t\t %s: $%.2f\n", ((Sword) item).getSubType(), getReadPrice("Weapon", "Base", ((Sword) item).getSubType()));
+                    writer.printf("\t\t\t %s: $%.2f\n", ((Sword) item).getMaterial(), getReadPrice("Material", ((Sword) item).getMaterial(), ((Sword) item).getSubType()));
                     if (((Sword) item).isInlaid) {
-                        writer.printf("\t %s inlay: $%.2f\n", ((Sword) item).getGemType(), getReadPrice("Upgrade", ((Sword) item).getGemType(), "Inlay"));
+                        writer.printf("\t\t\t %s inlay: $%.2f\n\n", ((Sword) item).getGemType(), getReadPrice("Upgrade", ((Sword) item).getGemType(), "Inlay"));
+                    } else {
+                        writer.printf("\n\n");
                     }
                 }
+                if (item instanceof Axe) {
+                    writer.printf("\t\t\t %s: $%.2f\n", ((Axe) item).getSubType(), getReadPrice("Weapon", "Base", ((Axe) item).getSubType()));
+                    writer.printf("\t\t\t %s: $%.2f\n", ((Axe) item).getMaterial(), getReadPrice("Material", ((Axe) item).getMaterial(), ((Axe) item).getSubType()));
+                    if (((Axe) item).isInlaid) {
+                        writer.printf("\t\t\t %s inlay: $%.2f\n\n", ((Axe) item).getGemType(), getReadPrice("Upgrade", ((Axe) item).getGemType(), "Inlay"));
+                    } else {
+                        writer.printf("\n\n");
+                    }
+                }
+                if (item instanceof Mace) {
+                    writer.printf("\t\t\t %s: $%.2f\n", ((Mace) item).getSubType(), getReadPrice("Weapon", "Base", ((Mace) item).getSubType()));
+                    writer.printf("\t\t\t %s: $%.2f\n", ((Mace) item).getMaterial(), getReadPrice("Material", ((Mace) item).getMaterial(), ((Mace) item).getSubType()));
+                    if (((Mace) item).isInlaid) {
+                        writer.printf("\t\t\t %s inlay: $%.2f\n\n", ((Mace) item).getGemType(), getReadPrice("Upgrade", ((Mace) item).getGemType(), "Inlay"));
+                    } else {
+                        writer.printf("\n\n");
+                    }
+
+                }
             }
+
+            writer.printf("\t\tTotal: $%.2f", order.getTotalPrice());
 
 
         } catch (IOException e) {
