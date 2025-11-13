@@ -4,16 +4,31 @@ public class ShopkeepCounter {
     private final RecordKeeper recordKeeper = new RecordKeeper();
     private Order currentOrder; // After an order is completed, if another order is created, make sure to start a fresh order
 
-    private void startRecordKeeper() {
-        recordKeeper.readPricesFromRecords();
-    }
 
     public void greetCustomer() {
-        String userName = InputGetter.getString("What's your name?\n");
+        String ascii = """
+                             _____
+                             \\   /
+                             |   |
+                .__.         |   |_____________________________________________
+                |  |_________|   |                                              \\
+                |  |         |   |________________________________________________\\
+                |  |_________|   |                                                /
+                |__|         |   |_____________________________________________ /
+                             |   |
+                             |   |
+                             /___\\""";
+        System.out.println(ascii);
+        System.out.println("\nWelcome to the Adventurer Armory.");
+        String userName = InputGetter.getString("\nWhat's your name?\n");
         int orderNumber = recordKeeper.getOrderNumber();
         currentOrder = new Order(userName, orderNumber);
         startRecordKeeper();
         openShop();
+    }
+
+    private void startRecordKeeper() {
+        recordKeeper.readPricesFromRecords();
     }
 
     // Begin prompting user for input from selections
@@ -146,6 +161,9 @@ public class ShopkeepCounter {
                     if (userInput == 1) {
                         isInlaid = true;
                         gemType = processGemInlayRequest();
+                        if (gemType.equalsIgnoreCase("None")) {
+                            isInlaid = false;
+                        }
                     } else if (userInput == 2) {
                         gemType = "None";
                     } else {
@@ -228,6 +246,9 @@ public class ShopkeepCounter {
                     if (userInput == 1) {
                         isInlaid = true;
                         gemType = processGemInlayRequest();
+                        if (gemType.equalsIgnoreCase("None")) {
+                            isInlaid = false;
+                        }
                     } else if (userInput == 2) {
                         gemType = "None";
                     } else {
@@ -309,6 +330,9 @@ public class ShopkeepCounter {
                     if (userInput == 1) {
                         isInlaid = true;
                         gemType = processGemInlayRequest();
+                        if (gemType.equalsIgnoreCase("None")) {
+                            isInlaid = false;
+                        }
                     } else if (userInput == 2) {
                         gemType = "None";
                     } else {
