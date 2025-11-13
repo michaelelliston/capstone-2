@@ -1,17 +1,20 @@
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RecordKeeper {
 
-    private final String pricesFileName = "src/main/resources/prices.csv";
-    private final String receiptsFilePath = "src/main/resources/receipts";
+    private final static String PRICES_FILE_PATH = "src/main/resources/prices.csv";
+    private final static String RECEIPTS_FILE_PATH = "src/main/resources/receipts/";
+    private final static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-d-MM_HHmmss");
     private HashMap<String, Double> itemPrices;
 
     public void readPricesFromRecords() {
         itemPrices = new HashMap<>();
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(pricesFileName))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(PRICES_FILE_PATH))) {
 
             bufferedReader.readLine(); // Skips over the header of the prices file
             String line;
@@ -49,9 +52,19 @@ public class RecordKeeper {
     }
 
     public void writeReceipt(Order order) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(receiptsFilePath + "/testreceipt.csv"))) {
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String formattedDateTime = currentDateTime.format(DATE_TIME_FORMATTER);
+
+        try (PrintWriter writer = new PrintWriter(new FileWriter(RECEIPTS_FILE_PATH + formattedDateTime + ".csv"))) {
 
             ArrayList<Priceable> currentOrder = order.getAllItemsInOrder();
+
+            String customerName = order.getCustomerName();
+            int orderNumber = order.getOrderNumber();
+
+            writer.write("\n\t" + customerName + "\n");
+            writer.printf("\tOrder ID: %d\n\n", orderNumber);
 
             for (Priceable item : currentOrder) {
 
@@ -82,7 +95,6 @@ public class RecordKeeper {
                     } else {
                         writer.printf("\n\n");
                     }
-
                 }
             }
 
@@ -92,5 +104,13 @@ public class RecordKeeper {
         } catch (IOException e) {
             System.err.println("An error occurred while trying to write your receipt.");
         }
+    }
+
+    public int getOrderNumber() {
+
+        File folder = new File(RECEIPTS_FILE_PATH);
+        File[] receipts = folder.listFiles(((dir, name) -> name.toLowerCase().endsWith(".csv")));
+        int orderNumber = (receipts == null) ? 1 : receipts.length + 1;
+        return orderNumber;
     }
 }

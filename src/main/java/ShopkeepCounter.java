@@ -10,8 +10,7 @@ public class ShopkeepCounter {
 
     public void greetCustomer() {
         String userName = InputGetter.getString("What's your name?\n");
-//        int orderNumber = recordKeeper.getOrderNumber(); TODO: Create method to obtain current order number
-        int orderNumber = 73;
+        int orderNumber = recordKeeper.getOrderNumber();
         currentOrder = new Order(userName, orderNumber);
         startRecordKeeper();
         openShop();
