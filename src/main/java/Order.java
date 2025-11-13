@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Order {
-    private String customerName;
-    private int orderNumber;
-    private ArrayList<Priceable> purchases = new ArrayList<Priceable>();
+    private final String customerName;
+    private final int orderNumber;
+    private final ArrayList<Priceable> purchases = new ArrayList<>();
 
     public Order(String customerName, int orderNumber) {
         this.customerName = customerName;
@@ -15,10 +15,9 @@ public class Order {
     }
 
     public double getTotalPrice() {
-        double totalPrice = purchases.stream()
+        return purchases.stream()
                 .mapToDouble(Priceable::getTotalPrice)
                 .sum();
-        return totalPrice;
     }
 
     public String getCustomerName() {
@@ -26,20 +25,15 @@ public class Order {
     }
 
     public ArrayList<Priceable> getAllItemsInOrder() {
-        return new ArrayList<Priceable>(purchases);
+        return new ArrayList<>(purchases);
     }
 
     public int getOrderNumber() {
         return this.orderNumber;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
-    }
-
     public void displayItemsInOrder() {
-        purchases.stream()
-                .forEach(System.out::println);
+        purchases.forEach(System.out::println);
     }
 }
 

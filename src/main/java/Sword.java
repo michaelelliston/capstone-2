@@ -15,10 +15,6 @@ public class Sword extends MeleeWeapon {
         return this.material;
     }
 
-    public String getType() {
-        return this.weaponType;
-    }
-
     public String getSubType() {
         return this.swordType;
     }

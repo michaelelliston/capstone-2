@@ -7,9 +7,4 @@ public abstract class Weapon implements Priceable {
         this.material = material;
         this.basePrice = basePrice;
     }
-
-    @Override
-    public double getBasePrice() {
-        return 0;
-    }
 }

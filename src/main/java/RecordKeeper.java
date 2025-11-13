@@ -69,6 +69,7 @@ public class RecordKeeper {
             for (Priceable item : currentOrder) {
 
                 writer.write("\t\t" + item.toString() + "\n");
+
                 if (item instanceof Sword) {
                     writer.printf("\t\t\t %s: $%.2f\n", ((Sword) item).getSubType(), getReadPrice("Weapon", "Base", ((Sword) item).getSubType()));
                     writer.printf("\t\t\t %s: $%.2f\n", ((Sword) item).getMaterial(), getReadPrice("Material", ((Sword) item).getMaterial(), ((Sword) item).getSubType()));
@@ -107,10 +108,8 @@ public class RecordKeeper {
     }
 
     public int getOrderNumber() {
-
         File folder = new File(RECEIPTS_FILE_PATH);
         File[] receipts = folder.listFiles(((dir, name) -> name.toLowerCase().endsWith(".csv")));
-        int orderNumber = (receipts == null) ? 1 : receipts.length + 1;
-        return orderNumber;
+        return (receipts == null) ? 1 : receipts.length + 1;
     }
 }
