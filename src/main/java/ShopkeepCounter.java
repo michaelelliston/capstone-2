@@ -38,7 +38,13 @@ public class ShopkeepCounter {
                 case 1 -> processWeaponCreationRequest("Sword");
                 case 2 -> processWeaponCreationRequest("Axe");
                 case 3 -> processWeaponCreationRequest("Mace");
-                case 8 -> processDisplayOrderRequest();
+                case 8 -> {
+                    if (!currentOrder.getAllItemsInOrder().isEmpty()) {
+                        processDisplayOrderRequest();
+                    } else {
+                        System.out.println("\nYou've got nothing in your order currently.");
+                    }
+                }
                 case 88 -> {
                     if (!currentOrder.getAllItemsInOrder().isEmpty()) {
                         processOrderCheckoutRequest();
@@ -150,6 +156,7 @@ public class ShopkeepCounter {
 
                 Sword sword = new Sword(recordKeeper.getReadPrice("Weapon", "Base",
                         weaponSubType), weaponMaterial, isInlaid, gemType, weaponType, weaponSubType, recordKeeper);
+
                 System.out.printf("\nThis would cost you $%.2f, shall I add it to your order?", sword.getTotalPrice());
 
                 userInput = 0;
