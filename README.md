@@ -1,5 +1,5 @@
-<h1 style="text-align:center">  ⚔️ Adventurer Armory ⚔️ </h1>
-<h4 style="text-align:center"> Customizable weapon shop written in Java. </h4>
+<h1 style="text-align:center">⚔️ Adventurer Armory ⚔️</h1>
+<h4 style="text-align:center">Customizable weapon shop written in Java.</h4>
 
 
 ---
