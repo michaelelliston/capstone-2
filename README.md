@@ -2,12 +2,12 @@
 <h4 style="text-align:center">Customizable weapon shop written in Java.</h4>
 
 
----
+
 
 <div style="text-align:center;">
 <img src="src/main/resources/readme-images/armoryWelcome.png" width="510" alt="Opening Menu"/></div>
 
----
+
 
 ## Features
 * Creates customized weapons, like Swords, Axes, and Maces based on user input.<br>
