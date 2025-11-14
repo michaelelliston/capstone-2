@@ -20,6 +20,10 @@ public class Order {
                 .sum();
     }
 
+    public void removePurchase(int index) {
+        purchases.remove(index);
+    }
+
     public String getCustomerName() {
         return this.customerName;
     }

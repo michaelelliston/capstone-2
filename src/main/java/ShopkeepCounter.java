@@ -41,6 +41,7 @@ public class ShopkeepCounter {
                     \t1) Sword
                     \t2) Axe
                     \t3) Mace
+                    \t7) Remove Item from Order
                     \t8) Display Current Order
                     \t88) Checkout
                     \t99) Leave
@@ -52,6 +53,13 @@ public class ShopkeepCounter {
                 case 1 -> processWeaponCreationRequest("Sword");
                 case 2 -> processWeaponCreationRequest("Axe");
                 case 3 -> processWeaponCreationRequest("Mace");
+                case 7 -> {
+                    if (!currentOrder.getAllItemsInOrder().isEmpty()) {
+                        processItemRemovalRequest();
+                    } else {
+                        System.out.println("\nYou've got nothing in your order currently.");
+                    }
+                }
                 case 8 -> {
                     if (!currentOrder.getAllItemsInOrder().isEmpty()) {
                         processDisplayOrderRequest();
@@ -76,6 +84,14 @@ public class ShopkeepCounter {
         currentOrder.displayItemsInOrder();
         System.out.printf("\nYour order comes to a total of: $%.2f", currentOrder.getOrderPrice());
         InputGetter.getString("\n\n\tWake me up when you're ready to continue... Zzzzz...\n");
+    }
+
+    private void processItemRemovalRequest() {
+        System.out.println();
+        currentOrder.displayItemsInOrder();
+        System.out.println();
+        int userInput = InputGetter.getInt("Which item are you looking to remove?\n");
+        currentOrder.removePurchase(userInput - 1);
     }
 
     private void processOrderCheckoutRequest() {
