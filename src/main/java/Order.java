@@ -42,7 +42,11 @@ public class Order {
     }
 
     public void displayItemsInOrder() {
-        purchases.forEach(System.out::println);
+        int listedNumber = 1;
+        for (Priceable item : purchases) {
+            System.out.println(listedNumber + ") " + item);
+            listedNumber++;
+        }
     }
 }
 
